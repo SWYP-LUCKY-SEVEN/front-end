@@ -1,13 +1,13 @@
-import styles from "./button.module.css";
+import styles from "./filter.module.css";
 
-interface ButtonProps {
+interface FilterProps {
   size?: "small" | "medium" | "large";
   text: string;
-  property?: "default" | "confirm" | "pressed" | "disabled";
+  property?: "deep" | "light" | "disabled";
   onClick: () => void;
 }
 
-export default function Button({ size = "medium", text, property = "default", onClick }: ButtonProps) {
+export default function Filter({ size = "medium", text, property = "deep", onClick }: FilterProps) {
   return (
     <div>
       <button className={`${styles[size]} ${styles[property]}`} onClick={onClick}>
