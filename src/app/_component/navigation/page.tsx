@@ -23,8 +23,8 @@ export default function Navigation({ children, onClick, isSearch }: INavigationP
       </div>
       {children}
       {isSearch && (
-        <div className={styles.SearchButton}>
-          <Image src={Search} alt="검색 버튼" width={48} height={48} onClick={onClick} />
+        <div className={styles.IconBox}>
+          <Image className={styles.SearchButton} src={Search} alt="검색 버튼" width={48} height={48} onClick={onClick} />
         </div>
       )}
     </div>

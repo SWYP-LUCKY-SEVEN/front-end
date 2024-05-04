@@ -1,4 +1,4 @@
-import styles from "./buttonBox.module.css";
+import styles from "./categoryBox.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -41,7 +41,8 @@ const icons = [
     }
     ];
 
-    export default function Footer() {
+
+    export default function CategoryBox() {
     return (
         <div className={styles.container}>
         {icons.map((icon, index) => (
