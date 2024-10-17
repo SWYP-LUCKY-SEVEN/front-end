@@ -57,5 +57,6 @@ export const config = {
     '/chat_bubble/:path*',
     '/studySetting/:path*',
     '/profile/:path*',
+    '/chat/:path*',
   ],
 };
