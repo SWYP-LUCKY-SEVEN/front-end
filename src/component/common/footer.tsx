@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from './footer.module.scss';
 import { usePathname, useRouter } from 'next/navigation';
 import { IconAdd } from '../../../public/icons';
+import { useEffect } from 'react';
 
 const icons = [
   {
@@ -34,8 +34,13 @@ const icons = [
 ];
 
 export default function Footer() {
-  const pathname = usePathname();
-  const router = useRouter();
+  const pathname = usePathname(); // 현재 경로 가져오기
+  const router = useRouter(); // router 사용
+
+  // 경로가 변경될 때마다 콘솔에 경로 출력
+  useEffect(() => {
+    console.log('현재 경로:', pathname);
+  }, [pathname]); // pathname이 변경될 때마다 실행
 
   const excludedPaths =
     /^\/(sign-in|fastMatching|createStudy|studyInfo.*|studySetting.*|profile\/.*|chat(?!_bubble).*|setProfile)/;
@@ -51,7 +56,8 @@ export default function Footer() {
         <div
           className={styles.addImage}
           onClick={() => {
-            router.push('./createStudy');
+            router.push('/createStudy');
+            console.log('경로 이동: /createStudy'); // 버튼을 클릭할 때 경로 출력
           }}
         >
           <Image src={IconAdd} alt="추가 이미지" width={31} height={31} />
@@ -64,20 +70,25 @@ export default function Footer() {
             : pathname === `/${icon.value}`;
 
         return (
-          <Link key={index} href={`/${icon.value}`}>
-            <div className={styles.ImageContainer}>
-              <Image
-                src={isActive ? icon.checked : icon.default}
-                alt={icon.alt}
-                width={
-                  icon.value === 'search' || icon.value === 'chat_bubble'
-                    ? 32
-                    : 44
-                }
-                height={44}
-              />
-            </div>
-          </Link>
+          <div
+            key={index}
+            className={styles.ImageContainer}
+            onClick={() => {
+              router.push(`/${icon.value}`);
+              console.log(`경로 이동: /${icon.value}`);
+            }}
+          >
+            <Image
+              src={isActive ? icon.checked : icon.default}
+              alt={icon.alt}
+              width={
+                icon.value === 'search' || icon.value === 'chat_bubble'
+                  ? 32
+                  : 44
+              }
+              height={44}
+            />
+          </div>
         );
       })}
     </div>
