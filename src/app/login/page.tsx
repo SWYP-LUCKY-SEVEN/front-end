@@ -33,7 +33,7 @@ function LoginComponent() {
       setCheckLogin(true);
       data.isNewUser ? router.push('/setProfile') : router.push('/');
     }
-  }, [data, router, setCheckLogin]);
+  }, [data]);
 
   return null;
 }
